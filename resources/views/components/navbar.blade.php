@@ -6,7 +6,7 @@
   
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item>
+        <li class="nav-item">
           <a class="nav-link" href="/dashboard">Dashboard<span class="sr-only">(current)</span></a>
         </li>
 
@@ -24,8 +24,11 @@
             <a class="dropdown-item" href="/register">Register</a>
             @else
             {{-- <div class="dropdown-divider"></div> --}}
-            <a class="dropdown-item" href="/profile">Profile</a>
-            <a class="dropdown-item" href="/logout">Logout</a>
+            <a class="dropdown-item" href="{{route('profile.edit')}}">Profile</a>
+            <a class="dropdown-item" href="/logout"
+            onclick="event.preventDefault();
+            document.getElementById('logout-form').submit()">Logout</a>
+            <form action="/logout" method="POST" id="logout-form">@csrf</form>
             @endguest
           </div>
         </li>
